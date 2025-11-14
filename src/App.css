@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
+/* src/App.css (Used for global styles, resets, and layout variables) */
+
+/* --- Global Variables and Reset --- */
+:root {
+    --bg-color: #8cc461; /* Main green background */
+    --score-bg: #fff;
+    --text-color: #fff;
+    --title-color: #fff;
+    --rock-color: #0074B6;
+    --scissors-color: #bd00ff;
+    --paper-color: #FFA943;
+    --border-color: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --rules-bg: #004d00;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Fallback font for scores to simulate digital/blocky look */
+@font-face {
+    font-family: 'DigitalNumbers';
+    src: local('Arial Black'), local('monospace');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+    background-color: var(--bg-color);
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.game-container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Main Content Area/View Wrapper */
+ .game-view-wrapper {
+    width: 800px;
+    height: 450px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+} 
+
+
+/* --- Rules Button and Modal Toggle --- */
+.rules-btn {
+    position: absolute;
+    bottom: 60px;
+    right : -80px;
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    padding: 3px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    
+    transition: background-color 0.3s;
+    z-index: 50;
+}
+
+
+    .rules-btn-hurray {
+    bottom: -10px; /* Remove bottom positioning */
+      /* Position at the top */
+    right: -120px; /* Keep it right-aligned */
+}
+
+
+.next-btn-global {
+    position: absolute;
+    bottom: 60px;
+    right: -200px;
+    background-color: transparent; /* Distinct red color */
+    color: white;
+    border: 2px solid var(--border-color);
+    padding: 3px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.3s;
+    z-index: 50;
+}
+
+.rules-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }

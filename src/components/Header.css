@@ -1,0 +1,67 @@
+/* src/components/Header.css */
+
+/* --- NEW: Wrapper for the rounded header border --- */
+.header-border-wrapper {
+    width: 700px;
+    /* 4px solid white border with rounded corners */
+    border: 2px solid var(--border-color); 
+    border-radius: 12px;
+    padding: 10px; /* Padding inside the border */
+    margin-top: 30px;
+    margin-bottom: 10px; /* Space below the entire header block */
+}
+
+/* --- Header and Score Board Styles (Inner Layout) --- */
+.game-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Remove redundant margin, it's now on the wrapper */
+    margin-bottom: 0; 
+    padding: 0; 
+}
+
+.game-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--title-color);
+    /* REMOVE the individual border from the title text */
+    border: none; 
+    padding: 0; /* Remove internal padding */
+    line-height: 1.2;
+    text-align: left; /* Ensure it aligns left */
+    /* Remove text shadow if it interferes with the clean look */
+    text-shadow: none; 
+    white-space: pre-line; /* Allows line breaks based on content */
+}
+
+.score-board {
+    display: flex;
+    gap: 20px;
+}
+
+.score-card {
+    background-color: var(--score-bg);
+    color: #000;
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-align: center;
+    width: 110px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.score-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #656565;
+    margin-bottom: 5px;
+}
+
+.score-value {
+    font-family: 'DigitalNumbers', monospace;
+    font-size: 44px;
+    font-weight: bolder;
+    line-height: 1;
+    color: #252525;
+}

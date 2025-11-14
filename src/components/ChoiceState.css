@@ -1,0 +1,101 @@
+/* src/components/ChoiceState.css */
+
+/* --- A. Choice State (Triangle Layout - Frame 1) --- */
+:root {
+    --line-color: #3b5f3d; /* Darker green color for the lines */
+    --line-thickness: 7px; /* Thickness of the connecting lines */
+}
+
+
+.choice-state {
+    width:100%;
+    height: 100%;
+    top : -40px;
+    position: relative;
+    display: block;
+}
+
+.choice-container {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    z-index: 10;
+    align-content: center;
+}
+
+.choice-container:hover {
+    transform: scale(1.05);
+}
+
+.choice-state::before {
+    content: '';
+    position: absolute;
+    top: 130px; /* Vertically centered between top containers */
+    left: 280px; /* Start near the Rock container */
+    width: 160px; /* Width to connect both containers */
+    height: var(--line-thickness);
+    background-color: var(--line-color);
+    z-index: 5; /* Place lines behind the choice rings */
+}
+
+/* 2. Line connecting ROCK (Top-Left) and PAPER (Bottom) */
+.choice-state::after {
+    content: '';
+    position: absolute;
+    top: 130px;
+    right : 360px;
+    width: 160px; /* Calculated hypotenuse length */
+    height: var(--line-thickness);
+    background-color: var(--line-color);
+    z-index: 5;
+    /* Rotate to connect top-left to bottom center */
+    transform: rotate(58deg); 
+    transform-origin: top left;
+}
+
+.choice-line {
+    position: absolute;
+    background-color: var(--line-color);
+    height: var(--line-thickness);
+    z-index: 5;
+}
+
+.choice-ring {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    border: 10px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: inset 0 -5px 0 rgba(0, 0, 0, 0.1), 0 5px 10px var(--shadow-color);
+    line-height: 1;
+}
+
+.line-scissors-paper {
+    top: 130px;
+    right: 360px;
+    width: 160px; /* Hypotenuse length */
+    /* Rotate to connect top-right to bottom center */
+    transform: rotate(-58deg);
+    transform-origin: top right;
+}
+
+.choice-icon-asset{
+    width : 80%;
+    height : 80%;
+    object-fit: contain;
+}
+
+/* Position choices to form a triangle */
+.rock-container { top: 80px; left: 240px; }
+.scissors-container { top: 80px; right: 300px; }
+.paper-container { bottom: 140px; left: 40%; }
+
+/* Apply specific colors to the border ring */
+.rock-container .choice-ring { border-color: var(--rock-color); }
+.scissors-container .choice-ring { border-color: var(--scissors-color); }
+.paper-container .choice-ring { border-color: var(--paper-color); }

@@ -1,0 +1,164 @@
+/* src/components/ResultState.css */
+
+/* --- B. Result State (Side-by-Side) --- */
+.result-state {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    height: 100%; /* Ensure it takes up the full space */
+}
+
+.result-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* POSITION FIX: Label appears ABOVE the icon, requires margin-bottom */
+.picked-label {
+    margin-bottom: 20px; 
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* Wrapper for the hand choice, anchoring the large layered circles */
+.picked-choice-wrapper {
+    position: relative; /* CRITICAL: Must be relative for absolute children */
+    width: 200px; /* Base size for the icon */
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.picked-choice {
+    width: 60%;
+    height: 60%;
+    cursor: default;
+    
+    /* Inherited ring styles */
+    border-radius: 50%;
+    border: 15px solid transparent; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: inset 0 -5px 0 rgba(0, 0, 0, 0.1), 0 5px 10px var(--shadow-color);
+    position: absolute; 
+    z-index: 10; /* Ensures the icon is on top of the ripples */
+}
+
+.result-icon-asset {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+
+
+/* --- WINNING ANIMATION (The three concentric circles) --- */
+
+/* Base styling for all three ripple layers */
+.huge-winner::before,
+.huge-winner::after,
+.winner-ripple-3 
+{
+    content: ''; 
+    position: absolute;
+    
+    /* Centering technique */
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    
+    border-radius: 50%;
+    
+    opacity: 0.2; 
+    z-index: 5; /* Lower than the icon ring (z-index 10) */
+    
+    animation: winnerPulse 1.6s infinite ease-in-out; /* Apply the pulse */
+}
+
+/* Styling for the first layer (::before) */
+.huge-winner::before {
+    width: 200px; 
+    height: 200px;
+    animation-delay: 0s;
+}
+
+/* Styling for the second layer (::after) */
+.huge-winner::after {
+    width: 250px;
+    height: 250px;
+    animation-delay: 0s; 
+}
+
+/* Styling for the third layer (.winner-ripple-3) */
+.winner-ripple-3 {
+    width: 300px; 
+    height: 300px;
+    animation-delay: 0.4s; 
+    z-index: 4; /* Ensures it is the furthest back layer */
+}
+
+/* DEFINE THE KEYFRAMES FOR THE PULSE ANIMATION WITH BRIGHT GREEN COLOR */
+@keyframes winnerPulse {
+    0% { 
+        transform: translate(-50%, -50%) scale(0.8); 
+        background-color: #3B6720; /* Bright Lime Green start */
+        opacity: 0.2; 
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1); 
+        background-color: #2E9A25; 
+        opacity: 0.5; /* Peak opacity */
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(0.8); 
+        background-color: #1DA82B; 
+        opacity: 0; /* Fade out completely */
+    }
+}
+
+
+/* --- Result Message Area --- */
+.result-message-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+}
+
+.result-text {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    letter-spacing: 1.5px;
+}
+
+.result-subtext {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.play-again-btn {
+    background-color: var(--score-bg);
+    color: #6b6b6b;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.3s;
+}
+.play-again-btn:hover {
+    background-color: #ddd;
+}
